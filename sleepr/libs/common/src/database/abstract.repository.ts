@@ -1,5 +1,5 @@
 import { Logger, NotFoundException } from '@nestjs/common';
-import { FilterQuery, Model, Types } from 'mongoose';
+import { FilterQuery, Model, Types, UpdateQuery } from 'mongoose';
 import { AbstractDocument } from './abstract.schema';
 
 export abstract class AbstractRepository<TDocument> extends AbstractDocument {
@@ -17,6 +17,10 @@ export abstract class AbstractRepository<TDocument> extends AbstractDocument {
     return (await createdDocument.save()).toJSON() as unknown as TDocument;
   }
 
+  find(filterQuery: FilterQuery<TDocument>): Promise<TDocument[]> {
+    return this.model.find(filterQuery).lean<TDocument[]>(true);
+  }
+
   async findOne(filterQuery: FilterQuery<TDocument>): Promise<TDocument> {
     // use lean(true) to basically remove any mongoose helper stuff and just return the pojo
     const document = await this.model
@@ -24,13 +28,38 @@ export abstract class AbstractRepository<TDocument> extends AbstractDocument {
       .lean<TDocument>(true);
 
     if (!document) {
-      this.logger.warn(
-        'Document was not found with filterQuery: ',
-        filterQuery,
-      );
-      throw new NotFoundException('Document was not found');
+      this.documentNotFoundLogAndThrow(filterQuery);
     }
 
     return document;
+  }
+
+  async findOneAndUpdate(
+    filterQuery: FilterQuery<TDocument>,
+    update: UpdateQuery<TDocument>,
+  ): Promise<TDocument> {
+    // by default you get the 'prior' object back; 'new: true' ensures we get the object after saving back
+    const document = await this.model
+      .findOneAndUpdate(filterQuery, update, {
+        new: true,
+      })
+      .lean<TDocument>(true);
+
+    if (!document) {
+      this.documentNotFoundLogAndThrow(filterQuery);
+    }
+
+    return document;
+  }
+
+  findOneAndDelete(filterQuery: FilterQuery<TDocument>): Promise<TDocument> {
+    return this.model.findOneAndDelete(filterQuery).lean<TDocument>(true);
+  }
+
+  private documentNotFoundLogAndThrow(
+    filterQuery: FilterQuery<TDocument>,
+  ): void {
+    this.logger.warn('Document was not found with filterQuery: ', filterQuery);
+    throw new NotFoundException('Document was not found');
   }
 }
