@@ -16,3 +16,7 @@ nest g module database -p common
 # mongodb
 
 npm i @nestjs/mongoose mongoose
+
+# set up the ms
+
+nest g app reservations
