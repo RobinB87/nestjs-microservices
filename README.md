@@ -10,6 +10,7 @@ npm i @nestjs/config
 
 nest g library common
 nest g module database -p common
+nest g module config -p common (wrapper around config module)
 
 # mongodb
 
