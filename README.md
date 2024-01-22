@@ -20,3 +20,4 @@ npm i @nestjs/mongoose mongoose
 # set up the ms
 
 nest g app reservations
+nest g resource reservations (project: default, transport layer: REST, generate CRUD: yes)
