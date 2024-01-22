@@ -6,13 +6,7 @@
 
   "customizations": {
     "vscode": {
-      "extensions": [
-        "alexcvzz.vscode-sqlite",
-        "ashinzekene.nestjs",
-        "esbenp.prettier-vscode",
-        "humao.rest-client",
-        "mongodb.mongodb-vscode"
-      ],
+      "extensions": ["ashinzekene.nestjs", "esbenp.prettier-vscode", "mongodb.mongodb-vscode"],
       "settings": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
