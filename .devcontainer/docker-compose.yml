@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    entrypoint: ""
+    command: ["sleep", "infinity"]
+    depends_on:
+      - db
+    networks:
+      - my-network
+
+  db:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  mongodb-data:
