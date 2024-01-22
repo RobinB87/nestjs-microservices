@@ -1,5 +1,5 @@
-import { Logger } from '@nestjs/common';
-import { Model, Types } from 'mongoose';
+import { Logger, NotFoundException } from '@nestjs/common';
+import { FilterQuery, Model, Types } from 'mongoose';
 import { AbstractDocument } from './abstract.schema';
 
 export abstract class AbstractRepository<TDocument> extends AbstractDocument {
@@ -15,5 +15,22 @@ export abstract class AbstractRepository<TDocument> extends AbstractDocument {
       _id: new Types.ObjectId(),
     });
     return (await createdDocument.save()).toJSON() as unknown as TDocument;
+  }
+
+  async findOne(filterQuery: FilterQuery<TDocument>): Promise<TDocument> {
+    // use lean(true) to basically remove any mongoose helper stuff and just return the pojo
+    const document = await this.model
+      .findOne(filterQuery)
+      .lean<TDocument>(true);
+
+    if (!document) {
+      this.logger.warn(
+        'Document was not found with filterQuery: ',
+        filterQuery,
+      );
+      throw new NotFoundException('Document was not found');
+    }
+
+    return document;
   }
 }
