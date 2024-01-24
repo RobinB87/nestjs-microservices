@@ -33,3 +33,10 @@ npm i class-validator class-transformer
 # request logging automatically
 
 npm i nestjs-pino pino-http pino-pretty
+
+# auth
+
+npm i @nestjs/passport passport passport-local
+npm i -D @types/passport-local
+npm i @nestjs/jwt passport-jwt
+npm i -D @types/passport-jwt
