@@ -21,6 +21,10 @@ npm i @nestjs/mongoose mongoose
 
 nest g app reservations
 nest g resource reservations (project: default, transport layer: REST, generate CRUD: yes)
+nest g module logger
+nest g app auth
+nest g module users > auth
+nest g controller users > auth
 
 # validation
 
