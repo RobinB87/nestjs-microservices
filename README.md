@@ -28,4 +28,4 @@ npm i class-validator class-transformer
 
 # request logging automatically
 
-npm i nestjs-pino pino-http
+npm i nestjs-pino pino-http pino-pretty
