@@ -21,3 +21,11 @@ npm i @nestjs/mongoose mongoose
 
 nest g app reservations
 nest g resource reservations (project: default, transport layer: REST, generate CRUD: yes)
+
+# validation
+
+npm i class-validator class-transformer
+
+# request logging automatically
+
+npm i nestjs-pino pino-http
