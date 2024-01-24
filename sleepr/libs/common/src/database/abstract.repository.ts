@@ -27,11 +27,7 @@ export abstract class AbstractRepository<TDocument> extends AbstractDocument {
       .findOne(filterQuery)
       .lean<TDocument>(true);
 
-    if (!document) {
-      this.documentNotFoundLogAndThrow(filterQuery);
-    }
-
-    return document;
+    return this.returnDocumentOrThrowAndLog(document, filterQuery);
   }
 
   async findOneAndUpdate(
@@ -45,20 +41,19 @@ export abstract class AbstractRepository<TDocument> extends AbstractDocument {
       })
       .lean<TDocument>(true);
 
-    if (!document) {
-      this.documentNotFoundLogAndThrow(filterQuery);
-    }
-
-    return document;
+    return this.returnDocumentOrThrowAndLog(document, filterQuery);
   }
 
   findOneAndDelete(filterQuery: FilterQuery<TDocument>): Promise<TDocument> {
     return this.model.findOneAndDelete(filterQuery).lean<TDocument>(true);
   }
 
-  private documentNotFoundLogAndThrow(
+  private returnDocumentOrThrowAndLog(
+    document: TDocument,
     filterQuery: FilterQuery<TDocument>,
-  ): void {
+  ) {
+    if (document) return document;
+
     this.logger.warn('Document was not found with filterQuery: ', filterQuery);
     throw new NotFoundException('Document was not found');
   }
