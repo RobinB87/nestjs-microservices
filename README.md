@@ -58,4 +58,4 @@ cd apps/reservations:
 - -f Dockerfile = context path (curr dir)
 
 - docker run sleepr_reservations
-- docker-compose up
+- docker-compose up (in other terminal - wsl - outside of project)

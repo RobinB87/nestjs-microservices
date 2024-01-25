@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   reservations:
@@ -9,7 +9,7 @@ services:
     command: npm run start:dev reservations
     env_file:
       - ./apps/reservations/.env
-    ports: 
+    ports:
       - '3000:3000'
     volumes:
       - .:/usr/src/app # mount entire project (local machine) to app dir in container
@@ -22,10 +22,10 @@ services:
     command: npm run start:dev auth
     env_file:
       - ./apps/auth/.env
-    ports: 
+    ports:
       - '3001:3001'
     volumes:
       - .:/usr/src/app
 
-  db:
+  mongo:
     image: mongo

@@ -9,4 +9,8 @@ export class UsersService {
   create(createUserDto: CreateUserDto) {
     return this.usersRepository.create(createUserDto);
   }
+
+  validateUser(email: string, password: string) {
+    throw new Error('Method not implemented.');
+  }
 }
