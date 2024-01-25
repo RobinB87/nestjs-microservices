@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  reservations:
+    build:
+      context: . # where to run docker build from, we want root, this file is in root, hence .
+      dockerfile: ./apps/reservations/Dockerfile
+      target: development # development stage in Dockerfile
+    command: npm run start:dev reservations
+    env_file:
+      - ./apps/reservations/.env
+    ports: 
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app # mount entire project (local machine) to app dir in container
+
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: npm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
+    ports: 
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/app
+
+  db:
+    image: mongo

@@ -40,3 +40,21 @@ npm i @nestjs/passport passport passport-local
 npm i -D @types/passport-local
 npm i @nestjs/jwt passport-jwt
 npm i -D @types/passport-jwt
+
+# docker devcontainer
+
+This project I only use a basic devcontainer Dockerfile to be able to run npm/nest without installing it locally and have some VSCode extensions.
+
+# docker
+
+The monorepo project now runs via the various dockerfiles and the docker-compose at the root.
+
+cd apps/reservations:
+
+- docker build ../../ -f Dockerfile -t sleepr_reservations
+
+- ../../ is context where to run build from (run it from root, so you can copy over libs dir etc)
+- -f Dockerfile = context path (curr dir)
+
+- docker run sleepr_reservations
+- docker-compose up
