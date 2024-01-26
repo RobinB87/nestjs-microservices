@@ -42,6 +42,8 @@ npm i @nestjs/jwt passport-jwt
 npm i -D @types/passport-jwt
 npm i bcryptjs express (bcryptjs for issue with docker mounting, express for required types for cookie)
 npm i -D @types/bcryptjs
+npm i cookie-parser
+npm i -D @types/cookie-parser
 
 # docker devcontainer
 
