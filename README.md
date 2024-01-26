@@ -45,6 +45,10 @@ npm i -D @types/bcryptjs
 npm i cookie-parser
 npm i -D @types/cookie-parser
 
+# ms communication
+
+npm i @nestjs/microservices (transport options, support networking between ms - we use standard tcp based transport layer to connect ms together)
+
 # docker devcontainer
 
 This project I only use a basic devcontainer Dockerfile to be able to run npm/nest without installing it locally and have some VSCode extensions.
