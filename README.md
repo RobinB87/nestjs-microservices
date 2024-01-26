@@ -68,3 +68,10 @@ cd apps/reservations:
 - docker run sleepr_reservations
 - docker-compose up (in other terminal - wsl - outside of project)
   (this way mongodb extension is currently not working in vs code - maybe re-add the network!)
+
+# stripe
+
+https://dashboard.stripe.com/test/dashboard
+get the developer key from the dashboard
+
+npm i stripe
