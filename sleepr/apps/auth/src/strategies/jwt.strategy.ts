@@ -2,9 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UsersService } from '../users/users.service';
-import { Request } from 'express';
 import { TokenPayload } from '../interfaces/token-payload.interface';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -15,7 +14,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       // specify where jwt lives (e.g. header, in our case cookie itself)
       jwtFromRequest: ExtractJwt.fromExtractors([
-        (request: Request) => request?.cookies?.Authentication,
+        // check request from express OR an RPC call (microservices)
+        (request: any) =>
+          request?.cookies?.Authentication || request?.Authentication,
       ]),
       secretOrKey: configService.get('JWT_SECRET'),
     });
