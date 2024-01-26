@@ -40,7 +40,8 @@ npm i @nestjs/passport passport passport-local
 npm i -D @types/passport-local
 npm i @nestjs/jwt passport-jwt
 npm i -D @types/passport-jwt
-npm i bcrypt
+npm i bcryptjs express (bcryptjs for issue with docker mounting, express for required types for cookie)
+npm i -D @types/bcryptjs
 
 # docker devcontainer
 
@@ -59,3 +60,4 @@ cd apps/reservations:
 
 - docker run sleepr_reservations
 - docker-compose up (in other terminal - wsl - outside of project)
+  (this way mongodb extension is currently not working in vs code - maybe re-add the network!)
