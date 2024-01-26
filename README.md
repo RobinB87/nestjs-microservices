@@ -25,6 +25,7 @@ nest g module logger
 nest g app auth
 nest g module users > auth
 nest g controller users > auth
+nest g app payments
 
 # validation
 
