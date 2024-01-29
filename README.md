@@ -66,7 +66,13 @@ cd apps/reservations:
 - -f Dockerfile = context path (curr dir)
 
 - docker run sleepr_reservations
-- docker-compose up (in other terminal - wsl - outside of project)
+
+# docker-compose
+
+In new terminal (WSL), outside of vscode:
+
+- cd /gitPersonal/nodejs/nestjs/nestjs-microservices/sleepr
+- docker-compose up
   (this way mongodb extension is currently not working in vs code - maybe re-add the network!)
 
 # stripe
