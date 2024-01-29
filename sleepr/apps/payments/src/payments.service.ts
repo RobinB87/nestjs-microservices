@@ -3,8 +3,6 @@ import { ConfigService } from '@nestjs/config';
 import Stripe from 'stripe';
 import { CreateChargeDto } from './dto/create-charge.dto';
 
-export type CvcCard = Stripe.PaymentMethodCreateParams.Card1;
-
 @Injectable()
 export class PaymentsService {
   private readonly stripe = new Stripe(

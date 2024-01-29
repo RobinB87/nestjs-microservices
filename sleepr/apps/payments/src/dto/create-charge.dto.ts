@@ -1,4 +1,4 @@
-import { CvcCard } from '../payments.service';
+import { CvcCard } from '@app/common';
 
 export class CreateChargeDto {
   card: CvcCard;
