@@ -13,7 +13,7 @@ export class ReservationsService {
     private readonly reservationsRepository: ReservationsRepository,
   ) {}
 
-  async create(createReservationDto: CreateReservationDto, userId: string) {
+  create(createReservationDto: CreateReservationDto, userId: string) {
     return this.paymentsService
       .send('create_charge', createReservationDto.charge)
       .pipe(
