@@ -1,5 +1,5 @@
 import { ExecutionContext, createParamDecorator } from '@nestjs/common';
-import { UserDocument } from '../../../../apps/auth/src/users/entities/user.schema';
+import { UserDocument } from '../entities';
 
 // user gets returned from verifyUser method in local strategy
 // then gets automatically added to the request object
