@@ -29,7 +29,10 @@ export class PaymentsService {
       return_url: 'https://www.google.com',
     });
 
-    this.notificationsService.emit('notify_email', { email });
+    this.notificationsService.emit('notify_email', {
+      email,
+      text: `Your payment of $${amount} has completed succesfully`,
+    });
 
     return paymentIntent;
   }
