@@ -81,3 +81,8 @@ https://dashboard.stripe.com/test/dashboard
 get the developer key from the dashboard
 
 npm i stripe
+
+# production
+
+Create separate package.json files for each app, with only the dependencies these need.
+npm init per project
