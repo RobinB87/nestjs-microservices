@@ -10,7 +10,7 @@ import { NotificationsService } from './notifications.service';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
-        PORT: Joi.number().required(),
+        RABBITMQ_URI: Joi.string().required(),
       }),
     }),
     LoggerModule,
