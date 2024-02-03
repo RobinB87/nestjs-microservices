@@ -6,7 +6,7 @@ services:
       context: . # where to run docker build from, we want root, this file is in root, hence .
       dockerfile: ./apps/reservations/Dockerfile
       target: development # development stage in Dockerfile
-    command: npm run start:dev reservations
+    command: yarn run start:dev reservations
     env_file:
       - ./apps/reservations/.env
     ports:
@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: ./apps/auth/Dockerfile
       target: development
-    command: npm run start:dev auth
+    command: yarn run start:dev auth
     env_file:
       - ./apps/auth/.env
     ports:
@@ -32,7 +32,7 @@ services:
       context: .
       dockerfile: ./apps/payments/Dockerfile
       target: development
-    command: npm run start:dev payments
+    command: yarn run start:dev payments
     env_file:
       - ./apps/payments/.env
     volumes:
@@ -43,7 +43,7 @@ services:
       context: .
       dockerfile: ./apps/notifications/Dockerfile
       target: development
-    command: npm run start:dev notifications
+    command: yarn run start:dev notifications
     env_file:
       - ./apps/notifications/.env
     volumes:

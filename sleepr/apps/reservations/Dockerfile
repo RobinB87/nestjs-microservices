@@ -3,15 +3,15 @@ FROM node:alpine as development
 WORKDIR /usr/src/app
 
 COPY package.json ./
-COPY package-lock.json ./
+COPY yarn.lock ./
 COPY tsconfig.json tsconfig.json
 
-RUN npm install
+RUN yarn install
 
 COPY apps/reservations apps/reservations
 COPY libs libs
 
-RUN npm run build
+RUN yarn run build
 
 
 FROM node:alpine as production
@@ -22,9 +22,9 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 
 COPY package.json ./
-COPY package-lock.json ./
+COPY yarn.lock ./
 
-RUN npm install --prod
+RUN yarn install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
 
