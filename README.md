@@ -4,9 +4,9 @@ nestjs microservices project
 
 # config
 
-npm i @nestjs/config
+yarn add @nestjs/config
 nest g module config -p common (wrapper around config module)
-npm i joi => for config schema validation (.env)
+yarn add joi => for config schema validation (.env)
 
 # monorepo
 
@@ -15,7 +15,7 @@ nest g module database -p common
 
 # mongodb
 
-npm i @nestjs/mongoose mongoose
+yarn add @nestjs/mongoose mongoose
 
 # set up the ms
 
@@ -29,26 +29,26 @@ nest g app payments
 
 # validation
 
-npm i class-validator class-transformer
+yarn add class-validator class-transformer
 
 # request logging automatically
 
-npm i nestjs-pino pino-http pino-pretty
+yarn add nestjs-pino pino-http pino-pretty
 
 # auth
 
-npm i @nestjs/passport passport passport-local
-npm i -D @types/passport-local
-npm i @nestjs/jwt passport-jwt
-npm i -D @types/passport-jwt
-npm i bcryptjs express (bcryptjs for issue with docker mounting, express for required types for cookie)
-npm i -D @types/bcryptjs
-npm i cookie-parser
-npm i -D @types/cookie-parser
+yarn add @nestjs/passport passport passport-local
+yarn add -D @types/passport-local
+yarn add @nestjs/jwt passport-jwt
+yarn add -D @types/passport-jwt
+yarn add bcryptjs express (bcryptjs for issue with docker mounting, express for required types for cookie)
+yarn add -D @types/bcryptjs
+yarn add cookie-parser
+yarn add -D @types/cookie-parser
 
 # ms communication
 
-npm i @nestjs/microservices (transport options, support networking between ms - we use standard tcp based transport layer to connect ms together)
+yarn add @nestjs/microservices (transport options, support networking between ms - we use standard tcp based transport layer to connect ms together)
 
 # docker devcontainer
 
@@ -80,9 +80,13 @@ In new terminal (WSL), outside of vscode:
 https://dashboard.stripe.com/test/dashboard
 get the developer key from the dashboard
 
-npm i stripe
+yarn add stripe
 
 # production
 
 Create separate package.json files for each app, with only the dependencies these need.
-npm init per project
+yarn addnit per project
+
+# rabbitmq
+
+yarn add amqplib amqp-connection-manager
